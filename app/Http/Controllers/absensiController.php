@@ -16,22 +16,25 @@ class AbsensiController extends Controller
 {
     public function showKepalaTukangAndProyekLocation()
     {
-        $pekerjaKepalaTukang = pekerja::where('role', 'kepala tukang')->get();
-
+        $user_id = Auth::id();
+        $pekerjaKepalaTukang = Pekerja::where('role', 'kepala tukang')->get();
+        $proyeks = Proyek::where('id', $user_id)->get();
         $result = [];
 
-        foreach ($pekerjaKepalaTukang as $pekerja) {
-            $lokasiProyek = DB::table('proyeks')
-                ->where('id_proyek', $pekerja->id_proyek)
-                ->value('lokasi_proyek');
+        foreach ($proyeks as $proyek) {
+            $pekerjaKepalaTukang = pekerja::where('id_proyek', $proyek->id_proyek)
+                ->where('role', 'kepala tukang')
+                ->get();
 
-            $result[] = [
-                'nama_pekerja' => $pekerja->nama_pekerja,
-                'lokasi_proyek' => $lokasiProyek,
-                'id_proyek' => $pekerja->id_proyek,
-            ];
+            foreach ($pekerjaKepalaTukang as $pekerja) {
+                $result[] = (object) [
+                    'nama_pekerja' => $pekerja->nama_pekerja,
+                    'lokasi_proyek' => $proyek->lokasi_proyek,
+                    'id_proyek' => $proyek->id_proyek,
+                    'user_id' => $proyek->id, // Tambahkan user_id untuk pengecekan di view
+                ];
+            }
         }
-
         return view('Absensi.index', compact('result'));
     }
 
@@ -121,7 +124,6 @@ class AbsensiController extends Controller
 
     public function search(Request $request)
     {
-        // Ambil data pencarian dari request
         $id_proyek = $request->input('id_proyek');
         $tanggal = $request->input('tanggal');
 
@@ -176,5 +178,72 @@ class AbsensiController extends Controller
 
         // Redirect atau tampilkan response sesuai kebutuhan
         return redirect()->route('report.post', ['id_proyek' => $id_proyek])->with('success', 'Kasbon berhasil dikurangi');
+    }
+    public function showWeeklyAttendance()
+    {
+        $weekNumber = date('W'); // Minggu ke berapa dalam tahun ini
+        $year = date('Y');
+
+        $pekerjas = Pekerja::all(); // Ambil semua pekerja
+        $rekapAbsensi = [];
+
+        foreach ($pekerjas as $pekerja) {
+            $attendance = [
+                'nama_pekerja' => $pekerja->nama_pekerja,
+                'senin' => $this->getAttendanceStatus($pekerja->id, $year, $weekNumber, 1),
+                'selasa' => $this->getAttendanceStatus($pekerja->id, $year, $weekNumber, 2),
+                'rabu' => $this->getAttendanceStatus($pekerja->id, $year, $weekNumber, 3),
+                'kamis' => $this->getAttendanceStatus($pekerja->id, $year, $weekNumber, 4),
+                'jumat' => $this->getAttendanceStatus($pekerja->id, $year, $weekNumber, 5),
+                'sabtu' => $this->getAttendanceStatus($pekerja->id, $year, $weekNumber, 6),
+                'total_poin' => $this->getTotalPoints($pekerja->id, $year, $weekNumber)
+            ];
+
+            $rekapAbsensi[] = $attendance;
+        }
+
+        // Logging untuk debug
+        Log::info('Rekap Absensi:', ['rekapAbsensi' => $rekapAbsensi, 'weekNumber' => $weekNumber, 'year' => $year]);
+
+        return view('absensi.rekap_absensi_mingguan', compact('rekapAbsensi', 'weekNumber', 'year'));
+    }
+
+    private function getTotalPoints($pekerjaId, $year, $weekNumber)
+    {
+        $totalPoints = 0;
+        for ($dayOfWeek = 0; $dayOfWeek <= 6; $dayOfWeek++) {
+            $totalPoints += $this->getAttendanceStatus($pekerjaId, $year, $weekNumber, $dayOfWeek);
+        }
+        return $totalPoints;
+    }
+
+    private function getAttendanceStatus($pekerjaId, $year, $weekNumber, $dayOfWeek)
+    {
+        $absensi = Absensi::where('id_pekerja', $pekerjaId)
+            ->whereYear('created_at', $year)
+            ->where(DB::raw('WEEK(created_at)'), $weekNumber)
+            ->get()
+            ->filter(function ($record) use ($dayOfWeek) {
+                return \Carbon\Carbon::parse($record->created_at)->dayOfWeek == $dayOfWeek;
+            })
+            ->first();
+
+        // Logging untuk debug
+        Log::info('Absensi:', ['pekerja_id' => $pekerjaId, 'year' => $year, 'weekNumber' => $weekNumber, 'dayOfWeek' => $dayOfWeek, 'absensi' => $absensi]);
+
+        if ($absensi) {
+            switch ($absensi->status) {
+                case 'masuk':
+                    return 1;
+                case 'setengah_hari':
+                    return 0.5;
+                case 'tidak_masuk':
+                    return 0;
+                default:
+                    return 0;
+            }
+        }
+
+        return 0;
     }
 }

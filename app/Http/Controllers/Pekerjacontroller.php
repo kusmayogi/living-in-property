@@ -11,6 +11,7 @@ class PekerjaController extends Controller
 {
     public function index()
     {
+        $pekerjas = Pekerja::with('proyek')->get();
         $pekerjas = Pekerja::all();
         $jumlahPekerja = Pekerja::count();
         foreach ($pekerjas as $pekerja) {
@@ -31,7 +32,7 @@ class PekerjaController extends Controller
             $result[] = [
                 'nama_pekerja' => $pekerja->nama_pekerja,
                 'lokasi_proyek' => $lokasiProyek,
-                'id_pekerja' => $pekerja->id, // Assuming you have an 'id' field in the Pekerja model
+                'id_pekerja' => $pekerja->id,  //uming you have an 'id' field in the Pekerja model
             ];
         }
 
@@ -86,8 +87,9 @@ class PekerjaController extends Controller
         // Validate the request
         $validatedData = $request->validate([
             'nama_pekerja' => 'required',
-            'role' => 'required',
             'upah' => 'required',
+            'alamat' => 'required',
+            'role' => 'required|string|in:Kepala Tukang,Tukang,Kuli',
             'id_proyek' => 'required|exists:proyeks,id_proyek',
         ]);
 
@@ -118,6 +120,7 @@ public function update(Request $request, Pekerja $pekerja)
             'nama_pekerja' => 'required|string|max:255',
             'role' => 'required|string|max:255',
             'upah' => 'required|numeric',
+            'alamat' => 'required|string|max:255',
             'jumlah_kasbon' => 'required|numeric',
             'id_proyek' => 'required|exists:proyeks,id_proyek',
         ]);

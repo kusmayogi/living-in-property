@@ -15,7 +15,8 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        z-index: 9999; /* agar muncul di atas elemen lain */
+        z-index: 9999;
+        /* agar muncul di atas elemen lain */
     }
 
     .card {
@@ -41,11 +42,12 @@
         margin-bottom: 20px;
     }
 </style>
+
 <body>
     <section class="header">
         <div class="logo">
             <i class="ri-menu-line icon icon-0 menu"></i>
-            @if(auth()->check() && auth()->user())
+            @if (auth()->check() && auth()->user())
                 <h2>Hallo <span>{{ auth()->user()->name }}!</span></h2>
             @else
                 <div class="centered-card">
@@ -59,17 +61,16 @@
         </div>
         <div class="search--notification--profile">
             <div class="">
-                <!-- <input type="text" placeholder="Cari Pengajuan">
-                <button> <i class="ri-search-2-line"></i></button> -->
+                <a href="{{ route('rekap.absensi.mingguan') }}">Edit</a>
             </div>
             <div class="notification--profile">
                 <!-- <div class="picon bell">
                     <i class="ri-notification-2-line"></i> -->
-                </div>
-                <div class="picon profile">
-                    <img src="{{ asset('frontend/assets/img/Watermark.png') }}" alt="">
-                </div>
             </div>
+            <div class="picon profile">
+                <img src="{{ asset('frontend/assets/img/Watermark.png') }}" alt="">
+            </div>
+        </div>
         </div>
     </section>
     <section class="main">
@@ -77,7 +78,7 @@
             <ul class="sidebar--items">
                 @guest
                 @else
-                @if (auth()->user()->role === 'Master')
+                    @if (auth()->user()->role === 'Master')
                         <li>
                             <a href="/dashboard">
                                 <span class="icon icon-1"><i class="ri-layout-grid-line"></i></span>
@@ -88,7 +89,7 @@
                 @endguest
                 @guest
                 @else
-                @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer' || auth()->user()->role === 'Admin')
+                    @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer' || auth()->user()->role === 'Admin')
                         <li>
                             <a href="/keuangan">
                                 <span class="icon icon-2"><i class="ri-bar-chart-grouped-line"></i></span>
@@ -99,7 +100,7 @@
                 @endguest
                 @guest
                 @else
-                @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer')
+                    @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer')
                         <li>
                             <a href="/Data_pekerja">
                                 <span class="icon icon-2"><i class="ri-bar-chart-grouped-line"></i></span>
@@ -110,7 +111,7 @@
                 @endguest
                 @guest
                 @else
-                @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer' || auth()->user()->role === 'Pengawas')
+                    @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer' || auth()->user()->role === 'Pengawas')
                         <li>
                             <a href="/absensi" id="active--link">
                                 <span class="icon icon-2"><i class="ri-bar-chart-grouped-line"></i></span>
@@ -121,7 +122,7 @@
                 @endguest
                 @guest
                 @else
-                @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer')
+                    @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer')
                         <li>
                             <a href="/proyek">
                                 <span class="icon icon-4"><i class="ri-database-line"></i></span>
@@ -132,7 +133,7 @@
                 @endguest
                 @guest
                 @else
-                @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer')
+                    @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer')
                         <li>
                             <a href="/users">
                                 <span class="icon icon-4"><i class="ri-database-line"></i></span>
@@ -174,15 +175,18 @@
                             @foreach ($result as $index => $data)
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
-                                    <td>{{ $data['lokasi_proyek'] }}</td>
-                                    <td>{{ $data['nama_pekerja'] }}</td>
-                                    <td><a href="/absensi/form/{{ $data['id_proyek'] }}"
-                                        class="ri-edit-line edit">Absen</a>
-                                        <a href="{{ route('absensi.edit', ['id_proyek' => $data['id_proyek']]) }}">Edit</a>
+                                    <td>{{ $data->lokasi_proyek }}</td>
+                                    <td>{{ $data->nama_pekerja }}</td>
+                                    <td>
+                                        @if ($data->user_id == Auth::id())
+                                            <a href="/absensi/form/{{ $data->id_proyek }}"
+                                                class="ri-edit-line edit">Absen</a>
+                                        @endif
+                                        <a
+                                            href="{{ route('absensi.edit', ['id_proyek' => $data->id_proyek]) }}">Edit</a>
                                     </td>
                                 </tr>
                             @endforeach
-
                         </tbody>
                     </table>
                 </div>

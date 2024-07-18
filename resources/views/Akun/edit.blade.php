@@ -14,13 +14,8 @@
 <style>
     .btn-primary {
         margin-top: 10px;
-        /* Atur jarak atas */
         margin-right: 10px;
-        /* Atur jarak kanan */
         margin-bottom: 20px;
-        /* Atur jarak bawah */
-        /* margin-left: auto;  */
-        /* Atur jarak kiri */
     }
 </style>
 
@@ -45,13 +40,12 @@
         </div>
 
     </section>
-
     <section class="main">
         <div class="sidebar">
             <ul class="sidebar--items">
                 @guest
                 @else
-                @if (auth()->user()->role === 'Master')
+                    @if (auth()->user()->role === 'Master')
                         <li>
                             <a href="/dashboard">
                                 <span class="icon icon-1"><i class="ri-layout-grid-line"></i></span>
@@ -62,7 +56,10 @@
                 @endguest
                 @guest
                 @else
-                @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer' || auth()->user()->role === 'Admin' || auth()->user()->role === 'Pengawas')
+                    @if (auth()->user()->role === 'Master' ||
+                            auth()->user()->role === 'Manajer' ||
+                            auth()->user()->role === 'Admin' ||
+                            auth()->user()->role === 'Pengawas')
                         <li>
                             <a href="/keuangan">
                                 <span class="icon icon-2"><i class="ri-bar-chart-grouped-line"></i></span>
@@ -73,7 +70,7 @@
                 @endguest
                 @guest
                 @else
-                @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer')
+                    @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer')
                         <li>
                             <a href="/Data_pekerja">
                                 <span class="icon icon-2"><i class="ri-bar-chart-grouped-line"></i></span>
@@ -84,7 +81,7 @@
                 @endguest
                 @guest
                 @else
-                @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer' || auth()->user()->role === 'Pengawas')
+                    @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer' || auth()->user()->role === 'Pengawas')
                         <li>
                             <a href="/absensi">
                                 <span class="icon icon-2"><i class="ri-bar-chart-grouped-line"></i></span>
@@ -95,7 +92,7 @@
                 @endguest
                 @guest
                 @else
-                @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer')
+                    @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer')
                         <li>
                             <a href="/proyek">
                                 <span class="icon icon-4"><i class="ri-database-line"></i></span>
@@ -106,9 +103,9 @@
                 @endguest
                 @guest
                 @else
-                @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer')
+                    @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer')
                         <li>
-                            <a href="/users"  id="active--link">
+                            <a href="/users" id="active--link">
                                 <span class="icon icon-4"><i class="ri-database-line"></i></span>
                                 <span class="sidebar--item" style="white-space: nowrap;">Daftar Pegawai</span>
                             </a>
@@ -131,7 +128,6 @@
         </div>
         <div class="main--content">
             <div class="overview">
-                <!-- <h1>Edit Berita</h1> -->
                 <div class="title">
                     <div class="container">
                         <header>Detail Akun</header>
@@ -150,12 +146,16 @@
                                     <div class="column">
                                         <label for="role">Role</label>
                                         <select class="form-control" id="role" name="role" required>
-                                            <option value="master" {{ $user->role == 'master' ? 'selected' : '' }}>Master</option>
-                                            <option value="manajer" {{ $user->role == 'manajer' ? 'selected' : '' }}>Manajer</option>
-                                            <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
-                                            <option value="pengawas" {{ $user->role == 'pengawas' ? 'selected' : '' }}>Pengawas</option>
+                                            <option value="master" {{ $user->role == 'master' ? 'selected' : '' }}>
+                                                Master</option>
+                                            <option value="manajer" {{ $user->role == 'manajer' ? 'selected' : '' }}>
+                                                Manajer</option>
+                                            <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin
+                                            </option>
+                                            <option value="pengawas" {{ $user->role == 'pengawas' ? 'selected' : '' }}>
+                                                Pengawas</option>
                                         </select>
-                                    </div>                                    
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="column">
@@ -171,27 +171,27 @@
                                 </div>
                                 <div class="column">
                                     <label for="proyeks">Proyek yang Diizinkan</label>
-                                    <select name="proyeks[]" id="proyeks" multiple>
+                                    <select name="proyeks[]" id="proyeks" class="form-control" multiple>
                                         @foreach ($proyeks as $proyek)
-                                            <option value="{{ $proyek->id }}" {{ $user->proyeks->contains($proyek->id) ? 'selected' : '' }}>
+                                            <option value="{{ $proyek->id_proyek }}"
+                                                {{ $user->proyeks->contains($proyek->id_proyek) ? 'selected' : '' }}>
                                                 {{ $proyek->nama_proyek }}
                                             </option>
                                         @endforeach
                                     </select>
                                 </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="column">
-                                        <button type="submit" id="btnSimpan" class="btn btn-primary">Simpan</button>
-                                    </div>
-                                </div>
                     </div>
 
-                    </form>
+                    <div class="row">
+                        <div class="column">
+                            <button type="submit" id="btnSimpan" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </div>
                 </div>
-
+                </form>
             </div>
+
+        </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
     <script src="{{ asset('frontend/assets/js/formulir.js') }}"></script>
@@ -200,10 +200,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.getElementById('btnSimpan').addEventListener('click', function() {
-            // Lakukan proses penyimpanan data ke database di sini
-            // Setelah proses berhasil, tampilkan notifikasi menggunakan SweetAlert
-
-            // Contoh notifikasi menggunakan SweetAlert
             Swal.fire({
                 icon: 'success',
                 title: 'Berhasil',

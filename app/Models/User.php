@@ -22,10 +22,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'no_telfon',
+        'no_telp',
         'role',
+        'alamat',
     ];
-
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -44,8 +44,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function proyeks(): BelongsToMany
+    public function proyeks()
     {
-        return $this->belongsToMany(Proyek::class, 'user_proyek', 'id', 'id_proyek');
+        return $this->hasMany(Proyek::class);
     }
 }

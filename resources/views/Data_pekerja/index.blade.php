@@ -124,33 +124,35 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Nama Pekerja</th>
+                                <th>Lokasi</th>
                                 <th>Jabatan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($pekerjas as $index => $pekerjas)
+                            @foreach ($pekerjas as $index => $pekerja)
                                 <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $pekerjas->nama_pekerja }}</td>
-                                    <td>{{ $pekerjas->role }}</td>
+                                    <td>{{ $pekerja->id_pekerja }}</td>
+                                    <td>{{ $pekerja->nama_pekerja }}</td>
+                                    <td>{{ $pekerja->proyek ? $pekerja->proyek->lokasi_proyek : 'Tidak ada lokasi' }}</td>
+                                    <td>{{ $pekerja->role }}</td>
                                     <td>
                                         <div class="button-container">
-                                            <a href="{{ route('Data_pekerja.edit', $pekerjas->id_pekerja) }}" class="ri-edit-line edit">Edit</a>
+                                            <a href="{{ route('Data_pekerja.edit', $pekerja->id_pekerja) }}" class="ri-edit-line edit">Edit</a>
                                         </div>
                                         <div class="button-container">
-                                            <form action="{{ route('Data_pekerja.destroy', $pekerjas->id_pekerja)}}" method="POST">
+                                            <form action="{{ route('Data_pekerja.destroy', $pekerja->id_pekerja)}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="ri-delete-bin-line delete" onclick="return confirm('Apakah anda yakin ingin menghapus data pekerja ini?')">Hapus</button>
                                             </form>
                                         </div>
-                                        
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    
                 </div>
             </div>
         </div>

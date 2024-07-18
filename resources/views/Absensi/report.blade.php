@@ -8,7 +8,7 @@
     <title>Absensi</title>
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/styledashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/berita.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet" >
     <style>
         .btn-primary {
             margin-top: 10px;

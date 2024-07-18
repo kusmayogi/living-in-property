@@ -18,8 +18,14 @@ class Proyek extends Model
         'status',
         'keterangan',
         'nilai_proyek',
+        'id' // Pastikan user_id dapat diisi secara massal
     ];
 
+    // Definisikan relasi ke model User
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id', 'id'); // Relasi ke tabel users
+    }
 // app/Models/Proyek.php
 public function subProyeks()
 {
@@ -31,17 +37,12 @@ protected $primaryKey = 'id_proyek';
     {
         return $this->hasMany(Proyek::class, 'id_proyek');
     }
+    
     protected $table = 'proyeks';
 
     // Define any relationships with other models
-    public function pekerja()
+    public function pekerjas()
     {
-        return $this->hasMany(Pekerja::class, 'id_proyek');
+        return $this->hasMany(Pekerja::class, 'id_proyek', 'id_proyek');
     }
-    public function users(): BelongsToMany
-    {
-        return $this->belongsToMany(User::class, 'user_proyek', 'id_proyek', 'id');
-    }
-
-
 }

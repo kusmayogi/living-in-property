@@ -64,9 +64,6 @@ class AkunController extends Controller
             $user->name = $validatedData['name'];
             $user->role = $validatedData['role'];
             $user->save();
-    
-            // Lanjutkan dengan tindakan lainnya atau respon yang sesuai
-            // ...
         }
     
     
@@ -82,33 +79,28 @@ class AkunController extends Controller
     
     public function update(Request $request, $id)
     {
-        // Validasi input
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:users,email,' . $id,
-            'role' => 'required|string',
-            'no_telfon' => 'required|string|max:20',
-            'proyeks' => 'required|array',
-            'proyeks.*' => 'exists:proyeks,id', // Pastikan proyek valid
+            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
+            'role' => 'required|string|in:Master,Manajer,Admin,Pengawas',
+            'no_telfon' => 'required|string|max:15',
+            'proyeks' => 'nullable|array',
         ]);
 
-        // Temukan user berdasarkan ID
         $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role = $request->role;
+        $user->no_telfon = $request->no_telfon;
 
-        // Update data user
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->role = $request->input('role');
-        $user->no_telfon = $request->input('no_telfon');
+        if ($request->role !== 'Master') {
+            $user->proyeks()->sync($request->proyeks ?? []);
+        }
+
         $user->save();
 
-        // Update relasi proyek
-        $user->proyeks()->sync($request->input('proyeks', []));
-
-        // Redirect dengan pesan sukses
-        return redirect()->route('akun.index')->with('success', 'User updated successfully');
+        return redirect()->route('users.index')->with('success', 'Akun berhasil diperbarui.');
     }
-    
     public function destroy(string $id)
     {
         $users = User::findOrFail($id);

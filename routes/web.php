@@ -4,10 +4,12 @@ use App\Http\Controllers\absensi;
 use App\Http\Controllers\absensiController;
 use App\Http\Controllers\AbsensiController as ControllersAbsensiController;
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\gajiController;
 use App\Http\Controllers\kasbonController;
 use App\Http\Controllers\keuangancontroller;
+use App\Http\Controllers\LokasiAksesController;
 use App\Http\Controllers\Pekerjacontroller;
 use App\Http\Controllers\pemasukanController;
 use App\Http\Controllers\pengeluaranController;
@@ -55,8 +57,8 @@ Route::put('/absensi/update/{id}', 'AbsensiController@update')->name('absensi.up
 Route::put('/proyek/{id_proyek}', [ProyekController::class, 'update'])->name('proyek.update');
 
 Route::get('/absensi', [absensiController::class, 'showKepalaTukangAndProyekLocation'])->name('absensi.index');
-Route::get('/absensi/form/{id_proyek}', [AbsensiController::class, 'showForm']);
-Route::post('/absensi/store', [AbsensiController::class, 'store'])->name('absensi.store');
+Route::get('/absensi/form/{id_proyek}', [absensiController::class, 'showForm']);
+Route::post('/absensi/store', [absensiController::class, 'store'])->name('absensi.store');
 Route::get('/report/{id_proyek}', [gajiController::class, 'index'])->name('absensi.store');
 Route::post('/report/{id_proyek}', [gajiController::class, 'submitReport'])->name('report.post'); // Ubah nama route untuk metode POST
 
@@ -82,4 +84,8 @@ Route::get('/form_pencarian/{id_proyek?}', [absensiController::class, 'showFormW
 Route::put('/ubah-status-absensi/{id_absensi}',[absensiController::class, 'ubahStatusAbsensi']);
 
 Route::post('/report/store', [reportController::class, 'store'])->name('report.store');
+Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+Route::post('/register', [RegisteredUserController::class, 'store']);
+
+Route::get('/rekap-absensi-mingguan', [AbsensiController::class, 'showWeeklyAttendance'])->name('rekap.absensi.mingguan');
 require __DIR__.'/auth.php';

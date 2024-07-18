@@ -110,7 +110,7 @@
                 @else
                 @if (auth()->user()->role === 'Master')
                         <li>
-                            <a href="/dashboard" id="active--link">
+                            <a href="/dashboard" >
                                 <span class="icon icon-1"><i class="ri-layout-grid-line"></i></span>
                                 <span class="sidebar--item">Dashboard</span>
                             </a>
@@ -165,13 +165,19 @@
                 @else
                 @if (auth()->user()->role === 'Master' || auth()->user()->role === 'Manajer')
                         <li>
-                            <a href="/users">
+                            <a href="/users" id="active--link">
                                 <span class="icon icon-4"><i class="ri-database-line"></i></span>
                                 <span class="sidebar--item" style="white-space: nowrap;">Daftar Pegawai</span>
                             </a>
                         </li>
                     @endif
                 @endguest
+                <li>
+                    <a href="/profile">
+                        <span class="icon icon-4"><i class="ri-database-line"></i></span>
+                        <span class="sidebar--item" style="white-space: nowrap;">Akun</span>
+                    </a>
+                </li>
             </ul>
             <ul class="sidebar--bottom-items">
                 <li>
@@ -191,6 +197,7 @@
                 <div class="title">
                     <h2 title="section--title">Akun </h2>
                 </div>
+                <a href="{{ route('register') }}" class="ri-edit-line edit">Tambah Akun</a>
                 <div class="table">
                     <table class="table">
                         <thead>

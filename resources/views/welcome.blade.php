@@ -1,424 +1,597 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Living-Arch</title>
-    <!--Main CSS-->
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/font-awesome.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
-    <link rel="icon" href="{{ asset('frontend/assets/img/Logo.png') }}" type="image/png">
-</head>
-<body>
-     <!--Navbar mulai-->
-     <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-        <a class="navbar-brand" href="{{ url('#') }}">Studio Living Architecture</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-         <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link active"  data-scroll-nav="0" href="{{ url('#home') }}">Beranda</a>
-            </li>
-            {{-- <li class="nav-item">
-                <a class="nav-link" data-scroll-nav="1"  href="{{ url('#features') }}">Fitur</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-scroll-nav="2"  href="{{ url('#fun-facts') }}">Fun Facts</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-scroll-nav="3"  href="{{ url('#app-screenshots') }}">Tampilan</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-scroll-nav="4"  href="{{ url('#how-it-works') }}">Cara Kerja</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-scroll-nav="5"  href="{{ url('#contact') }}">Kontak</a>
-              </li> --}}
-              <li class="nav-item">
-                <a class="nav-link"  href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Masuk</a>
-              </li>
-          </ul>
-        </div>
-        </div>
-      </nav>
-      <!--Navbar Akhir-->
-
-       <!--Home Awal-->
-        <section class="home d-flex align-items-center" id="home" data-scroll-index="0">
-            <div class="effect-wrap">
-                <i class="fas fa-plus effect effect-1"></i>
-                <i class="fas fa-plus effect effect-2"></i>
-                <i class="fas fa-circle-notch effect effect-3"></i>
-
-            </div>
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-7">
-                        <div class="home-text">
-                            <h1>We're Opening As Soon As Possible</h1>
-                            <p>Halo kini studio living siap mengakomodir kebutuhanmu, Tunggu peluncuran perdana kami ya!</p>
-                            {{-- <div class="home-btn">
-                                <a href="{{ url('#') }}" class="btn btn-1"><i class="fab fa-google-play"></i> Download Sekarang</a>
-                                <button type="button" class="btn btn-1 video-play-btn"><i class="fas fa-play"></i> Tutorial</button>
-                            </div> --}}
-                        </div>
-                    </div>
-                    <div class="col-md-5 text-center">
-                        <div class="home-img">
-                            <div class="circle"></div>
-                            <img src="{{ asset('frontend/assets/img/Logo.png') }}" alt="Sidokare">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-       <!--Home akhir-->
-       <!-- Video Pop awal-->
-       <div class="video-popup">
-        <div class="video-popup-inner">
-            <i class="fas fa-times video-popup-close"></i>
-            <div class="iframe-box">
-                <!-- <iframe id="player-1"  src="https://www.youtube.com/embed/hBelhQ6-3WU" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-                <iframe id="player-1" src="https://www.youtube.com/embed/97WRJwkfenI" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-        </div>
-       </div> 
-       <!--Video Pop Akhir-->
-       <!---Fitur E Sidokare awal -->
-       <section class="features section-padding" id="features" data-scroll-index="1">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-8">
-              <div class="section-title">
-                <h2>Will Be Launched <span>SOON!</span></h2>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="owl-carousel features-carousel">
-              {{-- <div class="features-item">
-                <div class="icon"><i class="fas fa-user"></i></div>
-                <h3>Ramah Pengguna</h3>
-                <p> Kami selalu memperhatikan pengalaman pengguna dalam menggunakan aplikasi kami, dan fitur cepat dalam penanganan keluhan dan informasi.</p>
-              </div>
-              <div class="features-item">
-                <div class="icon"><i class="fas fa-edit"></i></div>
-                <h3>Mudah Digunakan</h3>
-                <p> Fitur aplikasi kami yang cepat juga mudah digunakan, sehingga pengguna dapat dengan mudah menyelesaikan keluhan dan memperoleh informasi tanpa kesulitan.</p>
-              </div>
-              <div class="features-item">
-                <div class="icon"><i class="fas fa-check-double"></i></div>
-                <h3>Terintergrasi</h3>
-                <p> Aplikasi kami terintegrasi dengan sistem manajemen tiket, sehingga memungkinkan kami untuk mengelola dan menangani keluhan pengguna dengan lebih efektif.</p>
-              </div> --}}
-            </div>
-          </div>
-        </div>
-       </section>
-        <!---Fitur E Sidokare akhir  -->
-       <!---Funfact awal  -->
-       {{-- <section class="fun-facts section-padding"  id="fun-facts" data-scroll-index="2">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 col-md-5 d-flex align-items-center justify-content-center">
-              <div class="fun-facts-img">
-                <img src="{{ asset('frontend/assets/img/1.png') }}" alt="fun facts">
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-7">
-              <div class="section-title">
-                <h2>fun <span>facts</span></h2>
-              </div>
-              <div class="fun-facts-text">
-                <p> E-Sidokare telah membantu dalam tata kelola pemerintah dan masyarakat sehingga E-Sidokare sudah digunakan :</p>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="fun-fact-item style-kolom">
-                      <h3>150</h3>
-                      <span>Download</span>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="fun-fact-item style-kolom">
-                      <h3>50</h3>
-                      <span>Penyuka</span>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="fun-fact-item style-kolom">
-                      <h3>40</h3>
-                      <span>Rating Bintang 5</span>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="fun-fact-item style-kolom">
-                      <h3>1</h3>
-                      <span>Penghargaan</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-       </section> --}}
-        <!---Funfact akhir -->
-         <!---gambar aplikasi awal  -->
-         {{-- <section class="app-screenshots section-padding" id="app-screenshots" data-scroll-index="3">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <div class="section-title">
-                  <h2>Screen  <span>E-Sidokare</span></h2>
-                </div>
-              </div>
-            </div>
+   <head>
+    <link rel="stylesheet" href="{{ asset('frontend/assets/landing_page/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/landing_page/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/landing_page/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/landing_page/jquery.mCustomScrollbar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/landing_page/responsive.css') }}">
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Studio Living-Arch</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" type="text/css" href="">
+      <!-- style css -->
+      <link rel="stylesheet" type="text/css" href="">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="">
+      <!-- fevicon -->
+      <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="css/">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <!-- fonts -->
+      <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;800&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
+   </head>
+   <body>
+      <!-- header top section start -->
+      <div class="header_top_section">
+         <div class="container">
             <div class="row">
-              <div class="owl-carousel screenshots-carousel">
-                <div class="screenshot-item">
-                  <img src="{{ asset('frontend/assets/img/1.png') }}" alt="screenshot">
-                </div>
-                <div class="screenshot-item">
-                  <img src="{{ asset('frontend/assets/img/1.png') }}" alt="screenshot">
-                </div>
-                <div class="screenshot-item">
-                  <img src="{{ asset('frontend/assets/img/1.png') }}" alt="screenshot">
-                </div>
-                <div class="screenshot-item">
-                  <img src="{{ asset('frontend/assets/img/1.png') }}" alt="screenshot">
-                </div>
-                <div class="screenshot-item">
-                  <img src="{{ asset('frontend/assets/img/1.png') }}" alt="screenshot">
-                </div>
-              </div>
+               {{-- <div class="col-sm-12">
+                  <div class="header_top_main">
+                     <div class="call_text"><a href="#"><i class="fa fa-phone" aria-hidden="true"></i> +01-40-114-6855</a></div>
+                     <div class="call_text_2"><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> demo@gmail.com</a></div>
+                     <div class="call_text_1"><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Mordern Tawon Mosco</a></div>
+                  </div>
+               </div> --}}
             </div>
-          </div>
-
-        
-         </section> --}}
-          <!---gambar aplikasi akhir -->
-        <!--- penggunaan awal  -->
-        {{-- <section class="how-it-works section-padding" id="how-it-works" data-scroll-index="4">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <div class="section-title">
-                  <h2>Cara Pengajuan Laporan <span>E-Sidokare</span></h2>
-                </div>
-              </div>
+         </div>
+      </div>
+      <!-- header top section start -->
+      <!-- header section start -->
+      <div class="header_section">
+         <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+               <div class="logo"></div>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ml-auto">
+                     {{-- <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="projects.html">Project</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                     </li> --}}
+                     {{-- <li class="nav-item">
+                        <a class="nav-link" href="testimonial.html">Testimonial</a>
+                     </li> --}}
+                     {{-- <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                     </li> --}}
+                  </ul>
+                  <form class="form-inline my-2 my-lg-0">
+                     <div class="login_text">
+                        <ul>
+                           {{-- <li><a href="#">Login</a></li>
+                           <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li> --}}
+                        </ul>
+                     </div>
+                     {{-- <div class="quote_btn"><a href="#">Get A Quote</a></div> --}}
+                  </form>
+               </div>
+            </nav>
+         </div>
+         <!-- banner section start -->
+         <div class="banner_section layout_padding">
+            <div id="my_slider" class="carousel slide" data-ride="carousel">
+               <div class="carousel-inner">
+                  <div class="carousel-item active">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-sm-12">
+                              <div class="banner_taital_main">
+                                 <h1 class="banner_taital">Living In Property</h1>
+                                 <p class="banner_text">Kami berkomitmen untuk memberikan layanan terbaik kepada klien kami dengan menggabungkan desain yang inovatif, keahlian konstruksi yang tinggi, dan komitmen terhadap kualitas.</p>
+                                 <div class="btn_main">
+                                    <div class="started_text active"><a href="#">Hubungi Kami</a></div>
+                                    <div class="started_text"><a href="#">Tentang Kami</a></div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="carousel-item">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-sm-12">
+                              <div class="banner_taital_main">
+                                 <h1 class="banner_taital">BUILDER CONSTRUCTION SERVICES</h1>
+                                 <p class="banner_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna </p>
+                                 <div class="btn_main">
+                                    <div class="started_text active"><a href="#">Hubungi Kami</a></div>
+                                    <div class="started_text"><a href="#">Tentang Kami</a></div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="carousel-item">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-sm-12">
+                              <div class="banner_taital_main">
+                                 <h1 class="banner_taital">BUILDER CONSTRUCTION SERVICES</h1>
+                                 <p class="banner_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna </p>
+                                 <div class="btn_main">
+                                    <div class="started_text active"><a href="#">Contact US</a></div>
+                                    <div class="started_text"><a href="#">About Us</a></div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               {{-- <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+               <i class="fa fa-angle-left"></i>
+               </a>
+               <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+               <i class="fa fa-angle-right"></i>
+               </a> --}}
             </div>
+         </div>
+        <!-- banner section end -->
+      </div>
+      <!-- header section end -->
+      <!-- services section start -->
+      <div class="services_section layout_padding">
+         <div class="container-fluid">
             <div class="row">
-              <div class="col-lg-3 col-md-6">
-                <div class="how-it-works-item line-right">
-                  <div class="step">1</div>
-                  <h3>Tulis Laporan</h3>
-                  <p>Laporkan keluhan atau aspirasi anda dengan jelas dan lengkap</p>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                <div class="how-it-works-item line-right">
-                  <div class="step">2</div>
-                  <h3>Proses Verifikasi</h3>
-                  <p>Dalam 3 hari, laporan Anda akan diverifikasi dan diteruskan kepada instansi berwenang</p>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                <div class="how-it-works-item line-right">
-                  <div class="step">3</div>
-                  <h3>Proses Tindak Lanjut</h3>
-                  <p>Dalam 5 hari, instansi akan menindaklanjuti dan membalas laporan Anda</p>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                <div class="how-it-works-item">
-                  <div class="step">4</div>
-                  <h3>Beri Tanggapan</h3>
-                  <p>Anda dapat menanggapi kembali balasan yang diberikan oleh instansi dalam waktu 10 hari</p>
-                </div>
-              </div>
-
+               <div class="col-sm-12">
+                  <h1 class="services_taital">Layanan Kami</h1>
+                  <p class="services_text_1">Kami berkomitmen untuk memberikan layanan, kualitas, dan hasil yang terbaik untuk anda</p>
+               </div>
             </div>
-          </div>
-        </section> --}}
-        <!--- penggunaan akhir  -->
-        <!--- FAQ awal  -->
-        {{-- <section class="faq section-padding" id="faq" data-scroll-index="4">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <div class="section-title">
-                  <h2>Frequently <span>Ask and Question</span> </h2>
-                </div>
-              </div>
+            <div class="services_section_2">
+               <div class="row">
+                  <div class="col-lg-3 col-sm-6">
+                     <div class="box_main active">
+                        <div class="service_img"><img src="frontend/assets/images/icon-1.png"></div>
+                        <h4 class="development_text">Jasa Konstruksi</h4>
+                        <p class="services_text">Percayakan proyek konstruksi Anda kepada kami! Dengan tim profesional berpengalaman, kami menyediakan layanan konstruksi yang berkualitas, efisien, dan tepat waktu. Mulai dari perencanaan hingga penyelesaian, kami siap mewujudkan impian Anda menjadi kenyataan. </p>
+                        <div class="readmore_bt"><a href="#">Read More</a></div>
+                     </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-6">
+                     <div class="box_main">
+                        <div class="service_img"><img src="frontend/assets/images/icon-2.png"></div>
+                        <h4 class="development_text">Arsitektur</h4>
+                        <p class="services_text">Arsitektur kami menawarkan solusi desain inovatif dan personal untuk menciptakan ruang impian Anda. Dengan keahlian profesional dan pendekatan kreatif, kami wujudkan visi Anda menjadi kenyataan, memastikan kualitas tinggi dan kepuasan maksimal</p>
+                        <div class="readmore_bt"><a href="#">Read More</a></div>
+                     </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-6">
+                     <div class="box_main">
+                        <div class="service_img"><img src="frontend/assets/images/icon-3.png"></div>
+                        <h4 class="development_text">Maintenance</h4>
+                        <p class="services_text">Kami menyediakan perawatan rutin, perbaikan cepat, dan solusi efektif untuk memastikan aset dan peralatan Anda selalu dalam kondisi optimal. Didukung oleh teknisi berpengalaman dan teknologi terbaru, kami siap membantu Anda menjaga kelancaran operasional dan memperpanjang umur investasi Anda. Hubungi kami sekarang untuk layanan yang dapat diandalkan dan berkualitas!</p>
+                        <div class="readmore_bt"><a href="#">Read More</a></div>
+                     </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-6">
+                     <div class="box_main">
+                        <div class="service_img"><img src="frontend/assets/images/home.png"></div>
+                        <h4 class="development_text">Ready Unit</h4>
+                        <p class="services_text">Temukan kenyamanan dan kualitas di rumah siap huni kami. Dirancang dengan detail dan siap untuk Anda tempati, setiap rumah kami menawarkan lingkungan yang aman, fasilitas modern, dan suasana yang nyaman bagi keluarga Anda. Nikmati kemudahan dan keindahan tinggal di rumah impian tanpa repot membangun dari awal.</p>
+                        <div class="readmore_bt"><a href="#">Read More</a></div>
+                     </div>
+                  </div>
+               </div>
             </div>
-            <div class="row justify-content-center">
-              <div class="col-lg-10">
-                <div id="accordion">
-                  <div class="accordion-item">
-                    <div class="accordion-header" data-toggle="collapse" data-target="#collapse-01">
-                      <h3>Kemana saya harus mengirim berita yang ingin diposting dan apakah syarat-syaratnya?</h3>
-                    </div>
-                    <div class="collapse show" id="collapse-01" data-parent="#accordion">
-                      <div class="accordion-body">
-                        <p>: Berita dapat dikirimkan melalui salah satu E-Mail ini : desa.sidokari.go.id atau Bisa juga melalui Whatsapp di nomor 081904024849.</p>
-                      </div>
-                    </div>
+         </div>
+      </div>
+      <!-- services section end -->
+      <!-- about sectuion start -->
+      <div class="about_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <h1 class="about_taital">About Us</h1>
+                  <p class="about_text">Living In Property adalah perusahaan arsitektur, pembangunan rumah, gedung, dan penjualan rumah yang telah berpengalaman. Kami berkomitmen untuk memberikan layanan terbaik kepada anda dengan menggabungkan desain yang inovatif, keahlian konstruksi yang tinggi, dan komitmen terhadap kualitas.</p>
+                  <div class="read_bt_1"><a href="#">Read More</a></div>
+               </div>
+               <div class="col-md-6">
+                  <div class="about_img">
+                     <div class="video_bt">
+                        <div class="play_icon"><img src="frontend/assets/images/play-icon.png"></div>
+                     </div>
                   </div>
-                  <div class="accordion-item">
-                    <div class="accordion-header collapsed" data-toggle="collapse" data-target="#collapse-02">
-                      <h3>Apa saja jenis informasi yang dapat diajukan melalui aplikasi ini?</h3>
-                    </div>
-                    <div class="collapse" id="collapse-02" data-parent="#accordion">
-                      <div class="accordion-body">
-                        <p>Pengajuan PPID, Menyuarakan keluhan, dan memberikan aspirasi berupa saran dan kritik untuk se[putar desa Sidokare</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <div class="accordion-header collapsed" data-toggle="collapse" data-target="#collapse-03">
-                      <h3>Bagaimana cara memastikan informasi yang diajukan aman dan terlindungi?</h3>
-                    </div>
-                    <div class="collapse" id="collapse-03" data-parent="#accordion">
-                      <div class="accordion-body">
-                        <p>: Berita dapat dikirimkan melalui salah satu E-Mail ini : desa.sidokari.go.id atau Bisa juga melalui Whatsapp di nomor 081904024849.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+               </div>
             </div>
-          </div>
-        </section> --}}
-         <!--- FAQ akhir  -->
-          <!--- kontak awal  -->
-          {{-- <section class="contact section-padding" id="contact" data-scroll-index="5">
+         </div>
+      </div>
+      <!-- about sectuion end -->
+      <!-- projects section start -->
+      <div class="projects_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <h1 class="projects_taital">Projects</h1>
+                  <div class="nav-tabs-navigation">
+                     <div class="nav-tabs-wrapper">
+                        <ul class="nav " data-tabs="tabs">
+                           <li class="nav-item">
+                              <a class="nav-link active" href="#" data-toggle="tab">Category  filter</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link " href="#" data-toggle="tab">All</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link " href="#" data-toggle="tab">Painting</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link " href="#" data-toggle="tab">Reconstruction</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link " href="#" data-toggle="tab">Repairs</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link " href="#" data-toggle="tab">Residental</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="projects_section_2 layout_padding">
             <div class="container">
-              <div class="row justify-content-center">
-                <div class="col-lg-8">
-                  <div class="section-title">
-                    <h2>Komentar <span>Kontak</span></h2>
+               <div class="pets_section">
+                  <div class="pets_section_2">
+                     <div id="main_slider" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                           <div class="carousel-item active">
+                              <div class="row">
+                                 <div class="col-md-4">
+                                    <div class="container_main">
+                                       <img src="frontend/assets/images/img-1.png" alt="" class="image">
+                                       <div class="overlay">
+                                          <div class="text">
+                                             <h4 class="some_text"><i class="fa fa-link" aria-hidden="true"></i></h4>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="project_main">
+                                       <h2 class="work_text">Home Work</h2>
+                                       <p class="dummy_text">alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use</p>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4">
+                                    <div class="container_main">
+                                       <img src="frontend/assets/images/img-2.png" alt="" class="image">
+                                       <div class="overlay">
+                                          <div class="text">
+                                             <h4 class="some_text"><i class="fa fa-link" aria-hidden="true"></i></h4>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="project_main">
+                                       <h2 class="work_text">Home Work</h2>
+                                       <p class="dummy_text">alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use</p>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4">
+                                    <div class="container_main">
+                                       <img src="frontend/assets/images/img-3.png" alt="" class="image">
+                                       <div class="overlay">
+                                          <div class="text">
+                                             <h4 class="some_text"><i class="fa fa-link" aria-hidden="true"></i></h4>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="project_main">
+                                       <h2 class="work_text">Home Work</h2>
+                                        <p class="dummy_text">alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="carousel-item">
+                              <div class="row">
+                                 <div class="col-md-4">
+                                    <div class="container_main">
+                                       <img src="frontend/assets/images/img-1.png" alt="" class="image">
+                                       <div class="overlay">
+                                          <div class="text">
+                                             <h4 class="some_text"><i class="fa fa-link" aria-hidden="true"></i></h4>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="project_main">
+                                       <h2 class="work_text">Home Work</h2>
+                                       <p class="dummy_text">alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use</p>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4">
+                                    <div class="container_main">
+                                       <img src="frontend/assets/images/img-2.png" alt="" class="image">
+                                       <div class="overlay">
+                                          <div class="text">
+                                             <h4 class="some_text"><i class="fa fa-link" aria-hidden="true"></i></h4>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="project_main">
+                                       <h2 class="work_text">Home Work</h2>
+                                       <p class="dummy_text">alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use</p>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4">
+                                    <div class="container_main">
+                                       <img src="frontend/assets/images/img-3.png" alt="" class="image">
+                                       <div class="overlay">
+                                          <div class="text">
+                                             <h4 class="some_text"><i class="fa fa-link" aria-hidden="true"></i></h4>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="project_main">
+                                       <h2 class="work_text">Home Work</h2>
+                                       <p class="dummy_text">alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="carousel-item">
+                              <div class="row">
+                                 <div class="col-md-4">
+                                    <div class="container_main">
+                                       <img src="frontend/assets/images/img-1.png" alt="" class="image">
+                                       <div class="overlay">
+                                          <div class="text">
+                                             <h4 class="some_text"><i class="fa fa-link" aria-hidden="true"></i></h4>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="project_main">
+                                       <h2 class="work_text">Home Work</h2>
+                                       <p class="dummy_text">alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use</p>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4">
+                                    <div class="container_main">
+                                       <img src="frontend/assets/images/img-2.png" alt="" class="image">
+                                       <div class="overlay">
+                                          <div class="text">
+                                             <h4 class="some_text"><i class="fa fa-link" aria-hidden="true"></i></h4>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="project_main">
+                                       <h2 class="work_text">Home Work</h2>
+                                       <p class="dummy_text">alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use</p>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4">
+                                    <div class="container_main">
+                                       <img src="frontend/assets/images/img-3.png" alt="" class="image">
+                                       <div class="overlay">
+                                          <div class="text">
+                                             <h4 class="some_text"><i class="fa fa-link" aria-hidden="true"></i></h4>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="project_main">
+                                       <h2 class="work_text">Home Work</h2>
+                                       <p class="dummy_text">alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        </a>
+                     </div>
                   </div>
-                </div>
-                  </div>
-                  <div class="row justify-content-center">
-                  <div class="content">
-                    <div class="left-side">
-                      <div class="address details">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div class="topic">Alamat</div>
-                        <div class="text-one">Nganjuk</div>
-                        <div class="text-two">Desa Sidokare</div>
-                      </div>
-                      <div class="phone details">
-                        <i class="fas fa-phone-alt"></i>
-                        <div class="topic">Nomor Telepon</div>
-                        <div class="text-one">+0098 9893 5647</div>
-                        <div class="text-two">+0096 3434 5678</div>
-                      </div>
-                      <div class="email details">
-                        <i class="fas fa-envelope"></i>
-                        <div class="topic">Email</div>
-                        <div class="text-one">desasidokare.go.id</div>
-                      </div>
-                    </div>
-                    <div class="right-side">
-                      <div class="topic-text">Kirim Pesan</div>
-                      <p>Anda dapat mengirimi saya pesan dari sini. Ini kesenangan saya untuk membantu Anda.</p>
-                    <form action="#">
-                      <div class="input-box">
-                        <input type="text" placeholder="Masukkan Namamu">
-                      </div>
-                      <div class="input-box">
-                        <input type="text" placeholder="Masukkan Emailmu">
-                      </div>
-                      <div class="input-box message-box">
-                        <input type="text" placeholder="Masukkan Komentarmu">
-                      </div>
-                      <div class="button">
-                        <input type="button" value="Kirim Sekarang" >
-                      </div>
-                    </form>
-                  </div>
-                </div>
-
-      
-              
-             
-              
-          </section> --}}
-          <!--- kontak akhir  -->
-
-          <!--- footer awal  -->
-          <footer class="footer">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-3 col-md-6">
-                  <div class="footer-col">
-                    <h3>Tentang Kami</h3>
-                    <p>Soon will be updated</p>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                  <div class="footer-col">
-                    <h3>Office </h3>
-                    <ul>
-                      <li><a href="{{ url('') }}">privacy policy</a></li>
-                      <li><a href="{{ url('') }}">terms & condtion</a></li>
-                      <li><a href="{{ url('') }}">lates blogs</a></li>
-                      <li><a href="{{ url('') }}">app service</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                  <div class="footer-col">
-                    <h3>Link Alternatif</h3>
-                    <ul>
-                      {{-- <li><a href="{{ url('') }}">Home</a></li>
-                      <li><a href="{{ url('') }}">Fitur</a></li>
-                      <li><a href="{{ url('') }}">Tampilan</a></li>
-                      <li><a href="{{ url('') }}">Testi</a></li>
-                      <li><a href="{{ url('') }}">Kontak</a></li> --}}
-                    </ul>
-                  </div>
-                </div><div class="col-lg-3 col-md-6">
-                  <div class="footer-col">
-                    <h3>Media Sosial</h3>
-                    <ul>
-                      <li><a href="{{ url('') }}">facebook</a></li>
-                      <li><a href="{{ url('') }}">twitter</a></li>
-                      <li><a href="{{ url('') }}">instagram</a></li>
-                      <li><a href="{{ url('') }}">linkedin</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <p class="copyright-text">&copy2024 @Studiolivingarch</p>
-
-                </div>
-              </div>
+               </div>
             </div>
-
-          </footer>
-          <!--- footer akhir  -->
-        
-        
-
-
-    <!--Main Js-->
-    <script src="{{ asset('frontend/assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/scrollIt.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
-
-</body>
+         </div>
+      </div>
+      <!-- projects section end -->
+      <!-- testimonial section start -->
+      <div class="testimonial_section layout_padding">
+         <div class="container">
+            <div id="costum_slider" class="carousel slide" data-ride="carousel">
+               {{-- <div class="carousel-inner">
+                  <div class="carousel-item active">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <h1 class="testimonial_taital">Testimonial</h1>
+                          <div class="testimonial_section_2">
+                              <h2 class="client_name_text">Molik <span style="float: right;"><img src="frontend/assets/images/quick-icon.png"></span></h2>
+                              <p class="textimonial_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugia</p>
+                          </div>
+                          <div class="testimonial_section_2">
+                              <h2 class="client_name_text"><img src="frontend/assets/images/quick-icon.png"> <span style="float: right;">jeaanson</span></h2>
+                              <p class="textimonial_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugia</p>
+                          </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="carousel-item">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <h1 class="testimonial_taital">Testimonial</h1>
+                          <div class="testimonial_section_2">
+                              <h2 class="client_name_text">Molik <span style="float: right;"><img src="frontend/assets/images/quick-icon.png"></span></h2>
+                              <p class="textimonial_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugia</p>
+                          </div>
+                          <div class="testimonial_section_2">
+                              <h2 class="client_name_text"><img src="frontend/assets/images/quick-icon.png"> <span style="float: right;">jeaanson</span></h2>
+                              <p class="textimonial_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugia</p>
+                          </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="carousel-item">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <h1 class="testimonial_taital">Testimonial</h1>
+                          <div class="testimonial_section_2">
+                              <h2 class="client_name_text">Molik <span style="float: right;"><img src="frontend/assets/images/quick-icon.png"></span></h2>
+                              <p class="textimonial_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugia</p>
+                          </div>
+                          <div class="testimonial_section_2">
+                              <h2 class="client_name_text"><img src="frontend/assets/images/quick-icon.png"> <span style="float: right;">jeaanson</span></h2>
+                              <p class="textimonial_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugia</p>
+                          </div>
+                        </div>
+                     </div>
+                  </div>
+               </div> --}}
+               <a class="carousel-control-prev" href="#costum_slider" role="button" data-slide="prev">
+                 <i class="fa fa-angle-left"></i>
+               </a>
+               <a class="carousel-control-next" href="#costum_slider" role="button" data-slide="next">
+                 <i class="fa fa-angle-right"></i>
+               </a>
+            </div>
+         </div>
+      </div>
+      <!-- testimonial section end -->
+      <!-- contact section start -->
+      <div class="contact_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <h1 class="contact_taital">Contact Us</h1>
+               </div>
+            </div>
+         </div>
+         <div class="container-fluid">
+            <div class="contact_section_2">
+               <div class="row">
+                  <div class="col-md-6">
+                     <form action="">
+                        <div class="mail_section_1">
+                           <input type="text" class="mail_text" placeholder="Name" name="Name">
+                           <input type="text" class="mail_text" placeholder="Phone Number" name="Phone Number"> 
+                           <input type="text" class="mail_text" placeholder="Email" name="Email">
+                           <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
+                           <div class="send_bt"><a href="#">SEND</a></div>
+                        </div>
+                     </form>
+                  </div>
+                  <div class="col-md-6 padding_left_15">
+                     <div class="contact_img"><img src="frontend/assets/images/contact-img.png"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="map_main">
+            <div class="map-responsive">
+                <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=-6.200000,106.816666" width="600" height="600" frameborder="0" style="border:0; width: 100%;" allowfullscreen=""></iframe>
+            </div>
+         </div>
+      </div>
+      <!-- contact section end -->
+      <!-- footer section start -->
+      <div class="footer_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="location_text">
+                     <ul>
+                        <li>
+                           <a href="#"><span class="padding_15"><i class="fa fa-mobile" aria-hidden="true"></i></span> <br>Call +01 1234567890</a>
+                        </li>
+                        <li class="active">
+                           <a href="#"><span class="padding_15"><i class="fa fa-envelope" aria-hidden="true"></i></span> <br>demo@gmail.com</a>
+                        </li>
+                        <li>
+                           <a href="#"><span class="padding_15"><i class="fa fa-map-marker" aria-hidden="true"></i></span> <br>Location</a>
+                        </li> 
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="footer_section_2">
+               <div class="row">
+                  <div class="col-md-4">
+                     <h2 class="useful_text">QUICK LINKS</h2>
+                     <div class="footer_menu">
+                        <ul>
+                           <li><a href="index.html">Home</a></li>
+                           <li><a href="about.html">About</a></li>
+                           <li><a href="services.html">Services</a></li>
+                           <li><a href="projects.html">Projects</a></li>
+                           {{-- <li><a href="testimonial.html">Testimonial</a></li> --}}
+                           <li><a  href="{{ route('login') }}">Login</a></li>
+                           <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-md-4">
+                     {{-- <h2 class="useful_text">Work Portfolio</h2>
+                     <p class="lorem_text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem</p> --}}
+                  </div>
+                  <div class="col-md-4">
+                     <h2 class="useful_text">SIGN UP TO OUR NEWSLETTER</h2>
+                     <div class="form-group">
+                        <textarea class="update_mail" placeholder="Enter Your Email" rows="5" id="comment" name="Enter Your Email"></textarea>
+                        <div class="subscribe_bt"><a href="#">Subscribe</a></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="social_icon">
+               <ul>
+                  <li>
+                     <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                  </li>
+                  <li>
+                     <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                  </li>
+                  <li>
+                     <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                  </li>
+                  <li>
+                     <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!-- footer section end -->
+      <!-- copyright section start -->
+      <div class="copyright_section">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+                  <p class="copyright_text">2019 All Rights Reserved. Design by <a href="https://html.design" rel="nofollow">HTML.DESIGN</a> Distribution by <a href="https://themewagon.com">ThemeWagon</a></p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- copyright section end -->
+      <!-- Javascript files-->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <script src="js/plugin.js"></script>
+   </body>
 </html>

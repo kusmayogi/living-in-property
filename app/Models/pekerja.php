@@ -11,18 +11,19 @@ class Pekerja extends Model
 
     public function proyek()
     {
-        return $this->belongsTo(Proyek::class, 'id_proyek');
+        return $this->belongsTo(Proyek::class, 'id_proyek', 'id_proyek');
     }
 
     use HasFactory;
 
     protected $fillable = [
-        'nama_pekerja', 'role', 'upah', 'id_proyek', 'jumlah_kasbon'
+        'nama_pekerja', 'role', 'upah', 'id_proyek', 'jumlah_kasbon', 'alamat'
     ];
 
     protected $attributes = [
         'upah' => 0.00,
     ];
+    
 
     public function absensi()
     {
